@@ -1,26 +1,16 @@
-# Pet Adoption System
+# Pet Adoption System — Phase 2
 
-A Flask web application built with MVC architecture, Blueprints, and Flask-SQLAlchemy to display records from the Pet Adoption SQLite database.
+## Team Member Contributions
+- Elias: Set up project structure, `database.py`, `extensions.py`, and centralized error handling, Implemented exceptions, HTML templates and CSS styling.
 
-## Project Structure
+- Carolyn: Implemented `shelter` and `breed` models, managers, routes, and custom exceptions, `adopter` model, manager, routes, custom. 
 
-```text
-pet_adoption_app/
-├── pet_adoption.db
-├── database.py
-├── extensions.py
-├── run.py
-└── app/
-    ├── __init__.py
-    ├── shelter/
-    ├── breed/
-    ├── adopter/
-    ├── static/
-    │   └── style.css
-    └── templates/
-        ├── base.html
-        ├── index.html
-        ├── shelters.html
-        ├── breeds.html
-        ├── adopters.html
-        └── error.html
+
+
+
+## Instructions for Installing Dependencies
+
+1. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
