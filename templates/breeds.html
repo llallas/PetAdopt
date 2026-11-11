@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Breeds</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Breed Name</th>
+            <th>Species</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for breed in breeds %}
+        <tr>
+            <td>{{ breed.breed_id }}</td>
+            <td>{{ breed.breed_name }}</td>
+            <td>{{ breed.species }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

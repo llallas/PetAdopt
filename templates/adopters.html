@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Adopters</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for adopter in adopters %}
+        <tr>
+            <td>{{ adopter.adopter_id }}</td>
+            <td>{{ adopter.first_name }}</td>
+            <td>{{ adopter.last_name }}</td>
+            <td>{{ adopter.email }}</td>
+            <td>{{ adopter.phone }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

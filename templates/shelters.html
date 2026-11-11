@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>Shelters</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zip</th>
+            <th>Phone</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for shelter in shelters %}
+        <tr>
+            <td>{{ shelter.shelter_id }}</td>
+            <td>{{ shelter.name }}</td>
+            <td>{{ shelter.street_address }}</td>
+            <td>{{ shelter.city }}</td>
+            <td>{{ shelter.state }}</td>
+            <td>{{ shelter.zip_code }}</td>
+            <td>{{ shelter.phone }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
