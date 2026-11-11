@@ -3,7 +3,10 @@
 # File: __init__.py
 # Description: Initialize the Flask application and register blueprints
 
+from pathlib import Path
+
 from flask import Flask, render_template
+
 from database import init_db
 from app.shelter.shelter_routes import shelters_bp
 from app.breed.breed_routes import breeds_bp
@@ -13,9 +16,19 @@ from app.shelter.shelter_exceptions import ShelterDataError
 from app.breed.breed_exceptions import BreedDataError
 from app.adopter.adopter_exceptions import AdopterDataError
 
+
 def create_app():
-    app = Flask(__name__)
+    base_dir = Path(__file__).resolve().parent.parent
+    app = Flask(
+        __name__,
+        template_folder=str(base_dir / "templates"),
+        static_folder=str(base_dir / "static"),
+    )
     init_db(app)
+
+    with app.app_context():
+        from extensions import db
+        db.create_all()
 
     app.register_blueprint(shelters_bp)
     app.register_blueprint(breeds_bp)
