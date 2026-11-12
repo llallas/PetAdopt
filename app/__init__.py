@@ -8,6 +8,10 @@ from pathlib import Path
 from flask import Flask, render_template
 
 from database import init_db
+from app.pet.pet_model import Pet
+from app.application.application_model import Application
+from app.vaccination.vaccination_model import Vaccination
+
 from app.shelter.shelter_routes import shelters_bp
 from app.breed.breed_routes import breeds_bp
 from app.adopter.adopter_routes import adopters_bp
@@ -15,7 +19,6 @@ from app.adopter.adopter_routes import adopters_bp
 from app.shelter.shelter_exceptions import ShelterDataError
 from app.breed.breed_exceptions import BreedDataError
 from app.adopter.adopter_exceptions import AdopterDataError
-
 
 def create_app():
     base_dir = Path(__file__).resolve().parent.parent

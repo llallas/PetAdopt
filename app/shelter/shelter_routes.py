@@ -7,7 +7,7 @@ from flask import Blueprint, render_template
 from app.shelter.shelter_manager import ShelterManager
 from app.shelter.shelter_exceptions import ShelterDataError
 
-shelters_bp = Blueprint("shelters", __name__)
+shelters_bp = Blueprint("shelters", __name__, template_folder="templates")
 
 @shelters_bp.route("/shelters")
 def list_shelters():
