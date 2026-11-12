@@ -6,7 +6,7 @@ from flask import Blueprint, render_template
 from app.breed.breed_manager import BreedManager
 from app.breed.breed_exceptions import BreedDataError
 
-breeds_bp = Blueprint("breeds", __name__)
+breeds_bp = Blueprint("breeds", __name__, template_folder="templates")
 
 @breeds_bp.route("/breeds")
 def list_breeds():

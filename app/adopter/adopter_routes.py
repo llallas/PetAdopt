@@ -7,7 +7,7 @@ from flask import Blueprint, render_template
 from app.adopter.adopter_manager import AdopterManager
 from app.adopter.adopter_exceptions import AdopterDataError
 
-adopters_bp = Blueprint("adopters", __name__)
+adopters_bp = Blueprint("adopters", __name__, template_folder="templates")
 
 @adopters_bp.route("/adopters")
 def list_adopters():
