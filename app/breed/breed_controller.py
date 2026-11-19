@@ -8,6 +8,10 @@ from app.breed.breed_exceptions import BreedError
 
 class BreedController:
     @staticmethod
+    def fetch_breeds():
+        return BreedController.fetch_all_breeds()
+
+    @staticmethod
     def fetch_all_breeds():
         # Request breed records from the manager and handle application logic
         try:

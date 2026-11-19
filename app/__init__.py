@@ -9,6 +9,7 @@ from app.errors import register_error_handlers
 from app.shelter import shelters_bp
 from app.breed import breeds_bp
 from app.adopter import adopters_bp
+from app.pet.pet_routes import pets_bp
 
 # Register the remaining database models with SQLAlchemy.
 from app.pet.pet_model import Pet
@@ -30,6 +31,7 @@ def create_app():
     app.register_blueprint(shelters_bp)
     app.register_blueprint(breeds_bp)
     app.register_blueprint(adopters_bp)
+    app.register_blueprint(pets_bp)
 
     # Register centralized exception handlers.
     register_error_handlers(app)

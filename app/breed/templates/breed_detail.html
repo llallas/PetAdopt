@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ breed.breed_name }}</h1>
+<p><strong>Species:</strong> {{ breed.species }}</p>
+<p><strong>Breed ID:</strong> {{ breed.breed_id }}</p>
+<p><a href="{{ url_for('breeds.list_breeds') }}">Back to breeds</a></p>
+{% endblock %}

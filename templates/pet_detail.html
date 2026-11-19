@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ pet.name }}</h1>
+
+<p><strong>Breed:</strong> {{ pet.breed.breed_name if pet.breed else "Unknown" }}</p>
+<p><strong>Shelter:</strong>
+    {% if pet.shelter %}
+    <a href="{{ url_for('shelters.shelter_detail', shelter_id=pet.shelter.shelter_id) }}">{{ pet.shelter.name }}</a>
+    {% else %}Unknown{% endif %}
+</p>
+<p><strong>Birth Date:</strong> {{ pet.birth_date or "Unknown" }}</p>
+<p><strong>Color:</strong> {{ pet.color or "Unknown" }}</p>
+<p><strong>Sex:</strong> {{ pet.sex }}</p>
+<p><strong>Spay/Neuter:</strong> {{ pet.spay_neuter_status }}</p>
+<p><strong>Intake Date:</strong> {{ pet.intake_date }}</p>
+<p><strong>Adoption Status:</strong> {{ pet.adoption_status }}</p>
+
+<h2>Vaccinations</h2>
+{% if pet.vaccinations %}
+<table>
+    <thead><tr><th>Vaccine</th><th>Vaccination Date</th><th>Expiration Date</th></tr></thead>
+    <tbody>
+    {% for vaccination in pet.vaccinations %}
+    <tr>
+        <td>{{ vaccination.vaccine_name }}</td>
+        <td>{{ vaccination.vaccination_date }}</td>
+        <td>{{ vaccination.expiration_date or "None" }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No vaccinations recorded.</p>
+{% endif %}
+
+<p><a href="{{ url_for('pets.list_pets') }}">Back to pets</a></p>
+{% endblock %}

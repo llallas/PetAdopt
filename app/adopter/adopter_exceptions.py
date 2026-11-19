@@ -7,6 +7,14 @@
 class AdopterError(Exception):
     pass
 
+#Raised when adopter sort or search query parameters are invalid
+class AdopterValidationError(AdopterError):
+    pass
+
+# Raised when a requested adopter ID does not exist
+class AdopterNotFoundError(AdopterError):
+    pass
+
 #Raised when a database operation fails for adopters.
 class AdopterDatabaseError(AdopterError):
     pass

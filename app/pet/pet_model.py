@@ -21,3 +21,6 @@ class Pet(db.Model):
 
     # Access the shelter where this pet is housed.
     shelter = db.relationship("Shelter", back_populates="pets")
+    breed = db.relationship("Breed")
+    vaccinations = db.relationship("Vaccination", foreign_keys="Vaccination.pet_id")
+    applications = db.relationship("Application", foreign_keys="Application.pet_id", back_populates="pet")

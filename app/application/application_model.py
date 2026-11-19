@@ -15,3 +15,5 @@ class Application(db.Model):
     application_date = db.Column(db.Text, nullable=False)
     application_status = db.Column(db.Text, nullable=False)
     decision_date = db.Column(db.Text)
+    adopter = db.relationship("Adopter", foreign_keys=[adopter_id], back_populates="applications")
+    pet = db.relationship("Pet", foreign_keys=[pet_id], back_populates="applications")

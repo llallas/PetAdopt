@@ -13,3 +13,4 @@ class Adopter(db.Model):
     last_name = db.Column(db.Text, nullable=False)
     email = db.Column(db.Text, nullable=False)
     phone = db.Column(db.Text, nullable=False)
+    applications = db.relationship("Application", foreign_keys="Application.adopter_id", back_populates="adopter")

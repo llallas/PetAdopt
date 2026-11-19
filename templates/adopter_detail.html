@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ adopter.first_name }} {{ adopter.last_name }}</h1>
+<p><strong>Email:</strong> {{ adopter.email }}</p>
+<p><strong>Phone:</strong> {{ adopter.phone }}</p>
+
+<h2>Adoption Applications</h2>
+{% if adopter.applications %}
+<table>
+    <thead><tr><th>Application ID</th><th>Pet ID</th><th>Date</th><th>Status</th><th>Decision Date</th></tr></thead>
+    <tbody>
+    {% for application in adopter.applications %}
+    <tr>
+        <td>{{ application.application_id }}</td>
+        <td>
+            {% if application.pet_id %}
+            <a href="{{ url_for('pets.pet_detail', pet_id=application.pet_id) }}">{{ application.pet_id }}</a>
+            {% endif %}
+        </td>
+        <td>{{ application.application_date }}</td>
+        <td>{{ application.application_status }}</td>
+        <td>{{ application.decision_date or "Pending" }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No adoption applications submitted.</p>
+{% endif %}
+
+<p><a href="{{ url_for('adopters.list_adopters') }}">Back to adopters</a></p>
+{% endblock %}

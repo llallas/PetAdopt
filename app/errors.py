@@ -8,12 +8,14 @@ from sqlalchemy.exc import SQLAlchemyError
 from app.shelter.shelter_exceptions import ShelterError
 from app.breed.breed_exceptions import BreedError
 from app.adopter.adopter_exceptions import AdopterError
+from app.pet.pet_exceptions import PetError
 
 def register_error_handlers(app):
     # Handle custom exceptions raised by any domain
     @app.errorhandler(ShelterError)
     @app.errorhandler(BreedError)
     @app.errorhandler(AdopterError)
+    @app.errorhandler(PetError)
     def handle_domain_error(error):
         return render_template("error.html", message=str(error)), 500
 

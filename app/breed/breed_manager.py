@@ -15,3 +15,10 @@ class BreedManager:
             return Breed.query.all()
         except SQLAlchemyError as e:
             raise BreedDatabaseError("Failed to retrieve breeds from the database.") from e
+
+    @staticmethod
+    def get_breed_by_id(breed_id):
+        try:
+            return Breed.query.get(breed_id)
+        except SQLAlchemyError as e:
+            raise BreedDatabaseError("Failed to retrieve breed details from the database.") from e
