@@ -1,14 +1,25 @@
 # Pet Adoption System — Phase 2
 
 ## Team Member Contributions
-- Elias: Set up project structure, `database.py`, `extensions.py`, and centralized error handling, Implemented exceptions, HTML templates and CSS styling.
+- Elias: Set up the Flask application and centralized exception handling. Added pet filtering, sorting, result limits, pet details, and adopter searching, sorting, and application details.
+- Carolyn: Created the database and implemented the original shelter, breed, and adopter database features. Added shelter keyword searching and shelter detail pages showing related pets. Finalized Blueprint and template organization, connected breed details through the controller, added validation error handling, and tested the updated pages.
+- Both: Reviewed the project and checked that the features worked.
 
-- Carolyn: Implemented `shelter` and `breed` models, managers, routes, and custom exceptions, `adopter` model, manager, routes, custom. 
+## Phase 3 Features
 
+- Filter pets by breed, sex and spay/neuter status.
+- Sort pets by name, intake date, or birth date in ascending or descending order.
+- Limit the number of pets displayed.
+- Search shelter names using multiple keywords.
+- Search adopters by name or email using all keywords (AND) or any keyword (OR).
+- Sort adopters by first or last name in ascending or descending order.
+- View shelter details and related pets.
+- View pet details with related shelter, breed, vaccination and application records.
+- View adopter details and related applications.
+- View breed details.
+- Display error pages for invalid inputs, missing records and database errors.
 
-
-
-## Instructions for Installing Dependencies
+## Installation and Running Instructions
 
 1. Open a terminal in the project folder and create a virtual environment:
 
@@ -40,4 +51,4 @@
    python main.py
    ```
    
-5. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser. Use the navigation links to view Shelters, Breeds, and Adopters.
+5. Open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser. Use the navigation links to view Shelters, Breeds, Pets and Adopters.

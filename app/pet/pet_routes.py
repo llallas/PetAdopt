@@ -1,14 +1,13 @@
 # Author: Elias Arriaga
 # Date: 11/18/2026
 # File: pet_routes.py
-# Description: Defines Blueprint routes for listing/filtering pets and viewing pet details.
+# Description: Defines routes for listing/filtering pets and viewing pet details.
 
-from flask import Blueprint, render_template, request, abort
+from flask import render_template, request, abort
+from app.pet import pets_bp
 from app.pet.pet_controller import PetController
 from app.breed.breed_controller import BreedController
 from app.pet.pet_exceptions import PetNotFoundError
-
-pets_bp = Blueprint("pets", __name__, url_prefix="/pets")
 
 
 @pets_bp.route("/", strict_slashes=False)

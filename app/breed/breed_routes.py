@@ -6,7 +6,6 @@
 from flask import abort, render_template
 from app.breed import breeds_bp
 from app.breed.breed_controller import BreedController
-from app.breed.breed_manager import BreedManager
 
 
 @breeds_bp.route("/", strict_slashes=False)
@@ -18,7 +17,8 @@ def list_breeds():
 
 @breeds_bp.route("/<int:breed_id>")
 def breed_detail(breed_id):
-    breed = BreedManager.get_breed_by_id(breed_id)
+    # Retrieve one breed through the controller.
+    breed = BreedController.fetch_breed_details(breed_id)
     if breed is None:
         abort(404)
     return render_template("breed_detail.html", breed=breed)
