@@ -6,9 +6,15 @@
 from flask import Flask, render_template
 from database import init_db
 from app.errors import register_error_handlers
-from app.shelter.shelter_routes import shelters_bp
-from app.breed.breed_routes import breeds_bp
-from app.adopter.adopter_routes import adopters_bp
+from app.shelter import shelters_bp
+from app.breed import breeds_bp
+from app.adopter import adopters_bp
+
+# Register the remaining database models with SQLAlchemy.
+from app.pet.pet_model import Pet
+from app.application.application_model import Application
+from app.vaccination.vaccination_model import Vaccination
+
 
 def create_app():
     app = Flask(
@@ -17,18 +23,18 @@ def create_app():
         static_folder="../static",
     )
 
-    # Connect and initialize the SQLite database
+    # Connect and initialize the SQLite database.
     init_db(app)
 
-    # Register domain blueprints
+    # Register domain blueprints.
     app.register_blueprint(shelters_bp)
     app.register_blueprint(breeds_bp)
     app.register_blueprint(adopters_bp)
 
-    # Register centralized exception handlers
+    # Register centralized exception handlers.
     register_error_handlers(app)
 
-    # Home route
+    # Display the home page.
     @app.route("/")
     def home():
         return render_template("index.html")
