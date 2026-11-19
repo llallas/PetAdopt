@@ -15,3 +15,6 @@ class Shelter(db.Model):
     state = db.Column(db.Text, nullable=False)
     zip_code = db.Column(db.Text, nullable=False)
     phone = db.Column(db.Text, nullable=False)
+
+    # Access the pets housed at this shelter.
+    pets = db.relationship("Pet", back_populates="shelter")
