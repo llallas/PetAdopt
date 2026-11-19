@@ -14,7 +14,12 @@
         {% for breed in breeds %}
         <tr>
             <td>{{ breed.breed_id }}</td>
-            <td>{{ breed.breed_name }}</td>
+            <!-- Open the selected breed's detail page. -->
+            <td>
+                <a href="{{ url_for('breeds.breed_detail', breed_id=breed.breed_id) }}">
+                    {{ breed.breed_name }}
+                </a>
+            </td>
             <td>{{ breed.species }}</td>
         </tr>
         {% endfor %}

@@ -9,7 +9,7 @@ from app.errors import register_error_handlers
 from app.shelter import shelters_bp
 from app.breed import breeds_bp
 from app.adopter import adopters_bp
-from app.pet.pet_routes import pets_bp
+from app.pet import pets_bp
 
 # Register the remaining database models with SQLAlchemy.
 from app.pet.pet_model import Pet

@@ -23,3 +23,15 @@ class BreedController:
             raise
         except Exception as e:
             raise BreedError("An error occurred while processing breed data.") from e
+
+    @staticmethod
+    def fetch_breed_details(breed_id):
+        # Request one breed through the manager.
+        try:
+            return BreedManager.get_breed_by_id(breed_id)
+        except BreedError:
+            raise
+        except Exception as e:
+            raise BreedError(
+                "An error occurred while processing breed details."
+            ) from e
