@@ -4,17 +4,13 @@
 # Description: Define the routes for managing shelters
 
 from flask import Blueprint, render_template
-from app.shelter.shelter_manager import ShelterManager
-from app.shelter.shelter_exceptions import ShelterDataError
+from app.shelter.shelter_controller import ShelterController
 
-shelters_bp = Blueprint("shelters", __name__, template_folder="templates")
+# Create the shelter blueprint with URL prefix /shelters
+shelters_bp = Blueprint("shelters", __name__, url_prefix="/shelters")
 
-@shelters_bp.route("/shelters")
+@shelters_bp.route("/", strict_slashes=False)
 def list_shelters():
-    try:
-        shelters = ShelterManager.get_all_shelters()
-        return render_template("shelters.html", shelters=shelters)
-    except ShelterDataError:
-        raise
-    except Exception as e:
-        raise ShelterDataError("Something went wrong while loading the shelters page.") from e
+    # Fetch all shelters via the controller and render the template
+    shelters = ShelterController.fetch_all_shelters()
+    return render_template("shelters.html", shelters=shelters)

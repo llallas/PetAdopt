@@ -3,17 +3,13 @@
 # File: breed_routes.py
 # Description: Define the routes for breed-related pages in the Flask application
 from flask import Blueprint, render_template
-from app.breed.breed_manager import BreedManager
-from app.breed.breed_exceptions import BreedDataError
+from app.breed.breed_controller import BreedController
 
-breeds_bp = Blueprint("breeds", __name__, template_folder="templates")
+# Create the breed blueprint with URL prefix /breeds
+breeds_bp = Blueprint("breeds", __name__, url_prefix="/breeds")
 
-@breeds_bp.route("/breeds")
+@breeds_bp.route("/", strict_slashes=False)
 def list_breeds():
-    try:
-        breeds = BreedManager.get_all_breeds()
-        return render_template("breeds.html", breeds=breeds)
-    except BreedDataError:
-        raise
-    except Exception as e:
-        raise BreedDataError("Something went wrong while loading the breeds page.") from e
+    # Fetch all breeds via the controller and render the template
+    breeds = BreedController.fetch_all_breeds()
+    return render_template("breeds.html", breeds=breeds)

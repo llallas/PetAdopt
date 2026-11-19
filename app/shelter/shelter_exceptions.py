@@ -3,5 +3,10 @@
 # File: shelter_exceptions.py
 # Description: Define custom exceptions for shelter-related errors
 
-class ShelterDataError(Exception):
+# Base exception for shelter-related errors.
+class ShelterError(Exception):
+    pass
+
+#Raised when a database operation fails for shelters.
+class ShelterDatabaseError(ShelterError):
     pass

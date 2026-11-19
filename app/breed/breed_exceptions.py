@@ -3,5 +3,10 @@
 # File: breed_exceptions.py
 # Description: Define custom exceptions for breed-related errors
 
-class BreedDataError(Exception):
+# Base exception for breed-related errors.
+class BreedError(Exception):
+    pass
+
+    # Raised when a database operation fails for breeds.
+class BreedDatabaseError(BreedError):
     pass
