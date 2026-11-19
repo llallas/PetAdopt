@@ -2,6 +2,17 @@
 {% extends "base.html" %}
 {% block content %}
 <h1>Shelters</h1>
+
+<!-- Search shelter names using one or more words. -->
+<form method="get" action="{{ url_for('shelters.list_shelters') }}">
+    <label for="search">Search shelter names:</label>
+    <input type="text" id="search" name="search"
+           value="{{ search }}" placeholder="Enter keywords">
+    <button type="submit">Search</button>
+    <a href="{{ url_for('shelters.list_shelters') }}">Show all</a>
+</form>
+
+{% if shelters %}
 <table>
     <thead>
         <tr>
@@ -18,7 +29,14 @@
         {% for shelter in shelters %}
         <tr>
             <td>{{ shelter.shelter_id }}</td>
-            <td>{{ shelter.name }}</td>
+
+            <!-- Open the shelter details and related pets. -->
+            <td>
+                <a href="{{ url_for('shelters.shelter_detail', shelter_id=shelter.shelter_id) }}">
+                    {{ shelter.name }}
+                </a>
+            </td>
+
             <td>{{ shelter.street_address }}</td>
             <td>{{ shelter.city }}</td>
             <td>{{ shelter.state }}</td>
@@ -28,4 +46,7 @@
         {% endfor %}
     </tbody>
 </table>
+{% else %}
+<p>No shelters matched your search.</p>
+{% endif %}
 {% endblock %}

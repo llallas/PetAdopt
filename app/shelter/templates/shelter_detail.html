@@ -1,0 +1,48 @@
+<!-- shelter_detail.html: Displays a shelter and its related pets. -->
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ shelter.name }}</h1>
+
+<p>
+    {{ shelter.street_address }}<br>
+    {{ shelter.city }}, {{ shelter.state }} {{ shelter.zip_code }}
+</p>
+<p>Phone: {{ shelter.phone }}</p>
+
+<h2>Pets at This Shelter</h2>
+
+<!-- Access pet records through the Shelter relationship. -->
+{% if shelter.pets %}
+<table>
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Sex</th>
+            <th>Color</th>
+            <th>Spay/Neuter Status</th>
+            <th>Adoption Status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for pet in shelter.pets %}
+        <tr>
+            <td>{{ pet.name }}</td>
+            <td>{{ pet.sex }}</td>
+            <td>{{ pet.color or "Unknown" }}</td>
+            <td>{{ pet.spay_neuter_status }}</td>
+            <td>{{ pet.adoption_status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>No pets are currently listed for this shelter.</p>
+{% endif %}
+
+<p>
+    <a href="{{ url_for('shelters.list_shelters') }}">
+        Back to shelters
+    </a>
+</p>
+{% endblock %}

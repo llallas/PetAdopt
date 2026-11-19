@@ -5,7 +5,6 @@
 
 from extensions import db
 
-
 class Pet(db.Model):
     __tablename__ = "pet"
 
@@ -19,3 +18,6 @@ class Pet(db.Model):
     spay_neuter_status = db.Column(db.Text, nullable=False)
     intake_date = db.Column(db.Text, nullable=False)
     adoption_status = db.Column(db.Text, nullable=False)
+
+    # Access the shelter where this pet is housed.
+    shelter = db.relationship("Shelter", back_populates="pets")
